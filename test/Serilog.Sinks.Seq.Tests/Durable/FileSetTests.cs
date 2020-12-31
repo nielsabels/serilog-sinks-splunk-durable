@@ -1,9 +1,9 @@
 ﻿using System.IO;
-using Serilog.Sinks.Seq.Durable;
-using Serilog.Sinks.Seq.Tests.Support;
+using Serilog.Sinks.SplunkPlus.Durable;
+using Serilog.Sinks.SplunkPlus.Tests.Support;
 using Xunit;
 
-namespace Serilog.Sinks.Seq.Tests.Durable
+namespace Serilog.Sinks.SplunkPlus.Tests.Durable
 {
     public class FileSetTests
     {

@@ -1,7 +1,7 @@
-﻿using Serilog.Sinks.Seq.Tests.Support;
+﻿using Serilog.Sinks.SplunkPlus.Tests.Support;
 using Xunit;
 
-namespace Serilog.Sinks.Seq.Tests
+namespace Serilog.Sinks.SplunkPlus.Tests
 {
     public class SeqPayloadFormatterTests
     {

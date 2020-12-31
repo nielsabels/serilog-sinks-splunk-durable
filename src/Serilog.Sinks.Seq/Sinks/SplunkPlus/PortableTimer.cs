@@ -17,7 +17,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Serilog.Sinks.Seq
+namespace Serilog.Sinks.SplunkPlus
 {
     class PortableTimer : IDisposable
     {

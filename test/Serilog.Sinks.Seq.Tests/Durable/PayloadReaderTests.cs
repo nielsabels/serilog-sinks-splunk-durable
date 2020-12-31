@@ -2,12 +2,12 @@
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
-using Serilog.Sinks.Seq.Durable;
-using Serilog.Sinks.Seq.Tests.Support;
+using Serilog.Sinks.SplunkPlus.Durable;
+using Serilog.Sinks.SplunkPlus.Tests.Support;
 using Xunit;
 using IOFile = System.IO.File;
 
-namespace Serilog.Sinks.Seq.Tests.Durable
+namespace Serilog.Sinks.SplunkPlus.Tests.Durable
 {
     public class PayloadReaderTests
     {

@@ -16,8 +16,9 @@ namespace Sample
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.ControlledBy(levelSwitch)
                 .WriteTo.Console()
-                .WriteTo.Seq("http://localhost:5341",
-                             controlLevelSwitch: levelSwitch)
+                .WriteTo.SplunkEventCollector(splunkHost: "http://localhost:5341",
+                                              eventCollectorToken: "b9f1fc7d-7aea-4aec-83ec-1be2f2b03c19",
+                                              bufferFileFullName: "Test.log")
                 .CreateLogger();
 
             Log.Information("Sample starting up");

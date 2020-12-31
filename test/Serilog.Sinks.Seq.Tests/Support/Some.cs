@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Serilog.Events;
 using Xunit.Sdk;
 
-namespace Serilog.Sinks.Seq.Tests.Support
+namespace Serilog.Sinks.SplunkPlus.Tests.Support
 {
     static class Some
     {

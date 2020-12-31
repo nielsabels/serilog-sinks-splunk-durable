@@ -15,14 +15,12 @@
 using System;
 using Serilog.Events;
 
-namespace Serilog.Sinks.Seq
+namespace Serilog.Sinks.SplunkPlus
 {
     static class SeqApi
     {
-        public const string BulkUploadResource = "api/events/raw";
-        public const string ApiKeyHeaderName = "X-Seq-ApiKey";
         public const string RawEventFormatMimeType = "application/json";
-        public const string CompactLogEventFormatMimeType = "application/vnd.serilog.clef";
+        public const string CompactLogEventFormatMimeType = "application/json";
         public const string NoPayload = "";
 
         // Why not use a JSON parser here? For a very small case, it's not

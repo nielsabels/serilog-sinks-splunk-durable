@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Serilog.Sinks.Seq.Tests.Support
+namespace Serilog.Sinks.SplunkPlus.Tests.Support
 {
     public class NastyException : Exception
     {

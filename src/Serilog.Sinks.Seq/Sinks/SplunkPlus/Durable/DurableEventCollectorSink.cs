@@ -21,17 +21,17 @@ using System.Net.Http;
 using System.Text;
 using Serilog.Formatting.Compact;
 
-namespace Serilog.Sinks.Seq.Durable
+namespace Serilog.Sinks.SplunkPlus.Durable
 {
-    class DurableSeqSink : ILogEventSink, IDisposable
+    class DurableEventCollectorSink : ILogEventSink, IDisposable
     {
         readonly HttpLogShipper _shipper;
         readonly Logger _sink;
 
-        public DurableSeqSink(
+        public DurableEventCollectorSink(
             string serverUrl,
+            string eventCollectorToken,
             string bufferBaseFilename,
-            string apiKey,
             int batchPostingLimit,
             TimeSpan period,
             long? bufferSizeLimitBytes,
@@ -47,10 +47,10 @@ namespace Serilog.Sinks.Seq.Durable
 
             _shipper = new HttpLogShipper(
                 fileSet,
-                serverUrl, 
-                apiKey, 
-                batchPostingLimit, 
-                period, 
+                serverUrl,
+                eventCollectorToken,
+                batchPostingLimit,
+                period,
                 eventBodyLimitBytes,
                 controlledSwitch,
                 messageHandler,
@@ -60,7 +60,7 @@ namespace Serilog.Sinks.Seq.Durable
             const long individualFileSizeLimitBytes = 100L * 1024 * 1024;
             _sink = new LoggerConfiguration()
                 .MinimumLevel.Verbose()
-                .WriteTo.File(new CompactJsonFormatter(),
+                .WriteTo.File(new CompactSplunkJsonFormatter(renderTemplate: true),
                         fileSet.RollingFilePathFormat,
                         rollingInterval: RollingInterval.Day,
                         fileSizeLimitBytes: individualFileSizeLimitBytes,

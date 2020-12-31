@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 
-namespace Serilog.Sinks.Seq.Tests.Support
+namespace Serilog.Sinks.SplunkPlus.Tests.Support
 {
     class TempFolder : IDisposable
     {

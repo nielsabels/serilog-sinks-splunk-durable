@@ -14,7 +14,7 @@
 
 #if DURABLE
 
-namespace Serilog.Sinks.Seq.Durable
+namespace Serilog.Sinks.SplunkPlus.Durable
 {
     struct FileSetPosition
     {

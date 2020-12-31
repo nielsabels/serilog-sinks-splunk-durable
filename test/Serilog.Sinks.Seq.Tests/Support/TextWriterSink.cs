@@ -3,7 +3,7 @@ using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
 
-namespace Serilog.Sinks.Seq.Tests.Support
+namespace Serilog.Sinks.SplunkPlus.Tests.Support
 {
     public class TextWriterSink : ILogEventSink
     {

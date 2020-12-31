@@ -22,7 +22,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using Serilog.Debugging;
 
-namespace Serilog.Sinks.Seq.Durable
+namespace Serilog.Sinks.SplunkPlus.Durable
 {
     class FileSet
     {

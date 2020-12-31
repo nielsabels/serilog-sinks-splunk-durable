@@ -24,18 +24,18 @@ using Serilog.Debugging;
 using Serilog.Events;
 using IOFile = System.IO.File;
 using System.Threading.Tasks;
+using Serilog.Sinks.SplunkPlus;
 
 #if HRESULTS
 using System.Runtime.InteropServices;
 #endif
 
-namespace Serilog.Sinks.Seq.Durable
+namespace Serilog.Sinks.SplunkPlus.Durable
 {
     class HttpLogShipper : IDisposable
     {
         static readonly TimeSpan RequiredLevelCheckInterval = TimeSpan.FromMinutes(2);
 
-        readonly string _apiKey;
         readonly int _batchPostingLimit;
         readonly long? _eventBodyLimitBytes;
         readonly FileSet _fileSet;
@@ -59,26 +59,25 @@ namespace Serilog.Sinks.Seq.Durable
         volatile bool _unloading;
 
         public HttpLogShipper(
-            FileSet fileSet,
+            FileSet fileSet,    
             string serverUrl,
-            string apiKey,
+            string eventCollectorToken,
             int batchPostingLimit,
             TimeSpan period,
             long? eventBodyLimitBytes,
             ControlledLevelSwitch controlledSwitch,
-            HttpMessageHandler messageHandler,
+            HttpMessageHandler messageHandler,  
             long? retainedInvalidPayloadsLimitBytes,
             long? bufferSizeLimitBytes)
         {
             _fileSet = fileSet ?? throw new ArgumentNullException(nameof(fileSet));
-            _apiKey = apiKey;
             _batchPostingLimit = batchPostingLimit;
             _eventBodyLimitBytes = eventBodyLimitBytes;
             _controlledSwitch = controlledSwitch;
             _connectionSchedule = new ExponentialBackoffConnectionSchedule(period);
             _retainedInvalidPayloadsLimitBytes = retainedInvalidPayloadsLimitBytes;
             _bufferSizeLimitBytes = bufferSizeLimitBytes;
-            _httpClient = messageHandler != null ? new HttpClient(messageHandler) : new HttpClient();
+            _httpClient = messageHandler != null ? new EventCollectorClient(eventCollectorToken, messageHandler) : new EventCollectorClient(eventCollectorToken);
             _httpClient.BaseAddress = new Uri(SeqApi.NormalizeServerBaseAddress(serverUrl));
             _timer = new PortableTimer(c => OnTick());
 
@@ -151,10 +150,11 @@ namespace Serilog.Sinks.Seq.Durable
                         _nextRequiredLevelCheckUtc = DateTime.UtcNow.Add(RequiredLevelCheckInterval);
 
                         var content = new StringContent(payload, Encoding.UTF8, mimeType);
-                        if (!string.IsNullOrWhiteSpace(_apiKey))
-                            content.Headers.Add(SeqApi.ApiKeyHeaderName, _apiKey);
 
-                        var result = await _httpClient.PostAsync(SeqApi.BulkUploadResource, content).ConfigureAwait(false);
+                        var result = await _httpClient.PostAsync("services/collector", content).ConfigureAwait(false);
+
+                        SelfLog.WriteLine("Sent buffered data " + count + " : " + result.StatusCode);
+
                         if (result.IsSuccessStatusCode)
                         {
                             _connectionSchedule.MarkSuccess();

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{037440DE-440B-4129-9F7A-09B42D00397E}"
 EndProject
@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{88A3EC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{67B1C971-75EE-4ABE-B184-66AAC8D9D572}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.Seq", "src\Serilog.Sinks.Seq\Serilog.Sinks.Seq.csproj", "{D8A74F4C-981B-41F1-B807-FE08DFCC06D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.SplunkPlus", "src\Serilog.Sinks.Seq\Serilog.Sinks.SplunkPlus.csproj", "{D8A74F4C-981B-41F1-B807-FE08DFCC06D4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "sample\Sample\Sample.csproj", "{17497155-5D94-45DF-81D9-BD960E8CF217}"
 EndProject
@@ -49,5 +49,8 @@ Global
 		{D8A74F4C-981B-41F1-B807-FE08DFCC06D4} = {037440DE-440B-4129-9F7A-09B42D00397E}
 		{17497155-5D94-45DF-81D9-BD960E8CF217} = {88A3ECD1-D91A-49A2-A6D7-5A70973A0E3F}
 		{3C2D8E01-5580-426A-BDD9-EC59CD98E618} = {67B1C971-75EE-4ABE-B184-66AAC8D9D572}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FBB4D429-C431-47B2-9C8E-14B054AF6BB8}
 	EndGlobalSection
 EndGlobal
