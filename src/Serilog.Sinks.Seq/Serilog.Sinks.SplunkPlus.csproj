@@ -3,8 +3,8 @@
   <PropertyGroup>
     <Description>Durable and resilient Serilog sink that writes to the Splunk using HTTP Event Collector (based on Seq sink).</Description>
     <VersionPrefix>5.0.0</VersionPrefix>
-    <Authors>Serilog Contributors</Authors>
-    <Copyright>Copyright © Serilog Contributors 2013-2021</Copyright>
+    <Authors>Serilog Contributors, Alireza Vafi</Authors>
+    <Copyright></Copyright>
     <TargetFrameworks>netstandard1.3;net45;netstandard2.0;netcoreapp3.1</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

@@ -20,10 +20,6 @@ using Serilog.Sinks.SplunkPlus;
 using System.Net.Http;
 using Serilog.Sinks.PeriodicBatching;
 
-#if DURABLE
-using Serilog.Sinks.SplunkPlus.Durable;
-#endif
-
 namespace Serilog
 {
     /// <summary>
@@ -63,7 +59,7 @@ namespace Serilog
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            var eventCollectorSink = new DurableEventCollectorSink(
+            var eventCollectorSink = new EventCollectorSink(
                 splunkHost,
                 eventCollectorToken,
                 bufferFileFullName,

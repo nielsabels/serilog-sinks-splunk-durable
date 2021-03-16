@@ -18,7 +18,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace Serilog.Sinks.SplunkPlus.Durable
+namespace Serilog.Sinks.SplunkPlus
 {
     sealed class BookmarkFile : IDisposable
     {

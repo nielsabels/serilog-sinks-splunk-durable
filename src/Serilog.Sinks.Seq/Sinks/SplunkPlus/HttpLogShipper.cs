@@ -30,7 +30,7 @@ using Serilog.Sinks.SplunkPlus;
 using System.Runtime.InteropServices;
 #endif
 
-namespace Serilog.Sinks.SplunkPlus.Durable
+namespace Serilog.Sinks.SplunkPlus
 {
     class HttpLogShipper : IDisposable
     {
@@ -39,6 +39,7 @@ namespace Serilog.Sinks.SplunkPlus.Durable
         readonly int _batchPostingLimit;
         readonly long? _eventBodyLimitBytes;
         readonly FileSet _fileSet;
+        private readonly string _serverUrl;
         readonly long? _retainedInvalidPayloadsLimitBytes;
         readonly long? _bufferSizeLimitBytes;
 
@@ -71,6 +72,7 @@ namespace Serilog.Sinks.SplunkPlus.Durable
             long? bufferSizeLimitBytes)
         {
             _fileSet = fileSet ?? throw new ArgumentNullException(nameof(fileSet));
+            _serverUrl = serverUrl;
             _batchPostingLimit = batchPostingLimit;
             _eventBodyLimitBytes = eventBodyLimitBytes;
             _controlledSwitch = controlledSwitch;
@@ -78,7 +80,7 @@ namespace Serilog.Sinks.SplunkPlus.Durable
             _retainedInvalidPayloadsLimitBytes = retainedInvalidPayloadsLimitBytes;
             _bufferSizeLimitBytes = bufferSizeLimitBytes;
             _httpClient = messageHandler != null ? new EventCollectorClient(eventCollectorToken, messageHandler) : new EventCollectorClient(eventCollectorToken);
-            _httpClient.BaseAddress = new Uri(SeqApi.NormalizeServerBaseAddress(serverUrl));
+            _httpClient.BaseAddress = new Uri(SeqApi.NormalizeServerBaseAddress(_serverUrl));
             _timer = new PortableTimer(c => OnTick());
 
             SetTimer();
@@ -151,8 +153,8 @@ namespace Serilog.Sinks.SplunkPlus.Durable
 
                         var content = new StringContent(payload, Encoding.UTF8, mimeType);
 
-                        var result = await _httpClient.PostAsync("services/collector", content).ConfigureAwait(false);
-
+                        var request = new EventCollectorRequest(_serverUrl, payload, "services/collector");
+                        var result = await _httpClient.SendAsync(request).ConfigureAwait(false);
                         SelfLog.WriteLine("Sent buffered data " + count + " : " + result.StatusCode);
 
                         if (result.IsSuccessStatusCode)

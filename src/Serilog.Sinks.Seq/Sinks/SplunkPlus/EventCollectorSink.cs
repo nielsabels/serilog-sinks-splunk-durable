@@ -21,14 +21,15 @@ using System.Net.Http;
 using System.Text;
 using Serilog.Formatting.Compact;
 
-namespace Serilog.Sinks.SplunkPlus.Durable
+namespace Serilog.Sinks.SplunkPlus
 {
-    class DurableEventCollectorSink : ILogEventSink, IDisposable
+    class EventCollectorSink
+    : ILogEventSink, IDisposable
     {
         readonly HttpLogShipper _shipper;
         readonly Logger _sink;
 
-        public DurableEventCollectorSink(
+        public EventCollectorSink(
             string serverUrl,
             string eventCollectorToken,
             string bufferBaseFilename,
