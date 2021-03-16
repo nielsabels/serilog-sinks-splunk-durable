@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 
-namespace Serilog.Sinks.Splunk.Plus
+namespace Serilog.Sinks.Splunk.Durable
 {
     internal class EventCollectorClient : HttpClient, IDisposable
     {

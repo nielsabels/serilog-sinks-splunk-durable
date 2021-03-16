@@ -23,13 +23,13 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'net47' ">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
-    
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Serilog.Sinks.Seq\Serilog.Sinks.SplunkPlus.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="logs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Serilog.Sinks.Seq\Serilog.Sinks.Splunk.Durable.csproj" />
   </ItemGroup>
 
 </Project>

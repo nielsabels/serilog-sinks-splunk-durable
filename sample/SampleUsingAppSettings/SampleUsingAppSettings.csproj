@@ -10,11 +10,11 @@
 		<PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\Serilog.Sinks.Seq\Serilog.Sinks.SplunkPlus.csproj" />
-	</ItemGroup>
-	<ItemGroup>
 	  <None Update="logsettings.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\Serilog.Sinks.Seq\Serilog.Sinks.Splunk.Durable.csproj" />
 	</ItemGroup>
 </Project>

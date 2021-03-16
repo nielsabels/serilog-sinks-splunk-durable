@@ -29,7 +29,7 @@ using IOFile = System.IO.File;
 using System.Runtime.InteropServices;
 #endif
 
-namespace Serilog.Sinks.Splunk.Plus
+namespace Serilog.Sinks.Splunk.Durable
 {
     class HttpLogShipper : IDisposable
     {

@@ -21,7 +21,7 @@ using Serilog.Events;
 using Serilog.Formatting.Compact;
 using Serilog.Formatting.Json;
 
-namespace Serilog.Sinks.Splunk.Plus
+namespace Serilog.Sinks.Splunk.Durable
 {
     static class SeqPayloadFormatter
     {

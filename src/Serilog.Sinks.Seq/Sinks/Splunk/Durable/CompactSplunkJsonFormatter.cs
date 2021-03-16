@@ -7,7 +7,7 @@ using Serilog.Formatting;
 using Serilog.Formatting.Json;
 using Serilog.Parsing;
 
-namespace Serilog.Sinks.Splunk.Plus
+namespace Serilog.Sinks.Splunk.Durable
 {
     /// <summary>
     /// Compact Splunk Json Formatter

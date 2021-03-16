@@ -14,16 +14,16 @@
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <PackageTags>serilog;splunk</PackageTags>
     <!--<PackageIcon>https://serilog.net/images/serilog-sink-seq-nuget.png</PackageIcon>-->
-    <PackageProjectUrl>https://github.com/alirezavafi/serilog-sinks-splunk-plus</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/alirezavafi/serilog-sinks-splunk-durable</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/alirezavafi/serilog-sinks-splunk-plus</RepositoryUrl>
+    <RepositoryUrl>https://github.com/alirezavafi/serilog-sinks-splunk-durable</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GenerateAssemblyVersionAttribute>true</GenerateAssemblyVersionAttribute>
     <LangVersion>8</LangVersion>
     <Version>1.0.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company />
-    <AssemblyName>Serilog.Sinks.Splunk.Plus</AssemblyName>
+    <PackageId>Serilog.Sinks.Splunk.Durable</PackageId>
   </PropertyGroup>
   
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">

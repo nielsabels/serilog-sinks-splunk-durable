@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
-using Serilog.Sinks.Splunk.Plus;
+using Serilog.Sinks.Splunk.Durable;
 using Serilog.Sinks.SplunkPlus.Tests.Support;
 using Xunit;
 using IOFile = System.IO.File;

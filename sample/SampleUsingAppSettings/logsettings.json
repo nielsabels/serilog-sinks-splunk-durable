@@ -1,6 +1,6 @@
 ﻿{
   "Serilog": {
-    "Using": [ "Serilog.Sinks.Console", "Serilog.Sinks.Splunk.Plus" ],
+    "Using": [ "Serilog.Sinks.Console", "Serilog.Sinks.Splunk.Durable" ],
     "MinimumLevel": "Information",
     "WriteTo": [
       {
@@ -36,7 +36,7 @@
     "Properties": {
       "Application": "Test",
       "Environment": "Development",
-      "CustomPropery": "CustomValue"
+      "CustomProperty": "CustomValue"
     }
   }
 }

@@ -1,4 +1,4 @@
-﻿using Serilog.Sinks.Splunk.Plus;
+﻿using Serilog.Sinks.Splunk.Durable;
 using Serilog.Sinks.SplunkPlus.Tests.Support;
 using Xunit;
 

@@ -15,7 +15,7 @@
 using Serilog.Core;
 using Serilog.Events;
 
-namespace Serilog.Sinks.Splunk.Plus
+namespace Serilog.Sinks.Splunk.Durable
 {
     /// <summary>
     /// Instances of this type are single-threaded, generally only updated on a background

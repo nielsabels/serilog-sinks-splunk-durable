@@ -20,7 +20,7 @@ using System.Text;
 using Serilog.Core;
 using Serilog.Events;
 
-namespace Serilog.Sinks.Splunk.Plus
+namespace Serilog.Sinks.Splunk.Durable
 {
     class EventCollectorSink
     : ILogEventSink, IDisposable

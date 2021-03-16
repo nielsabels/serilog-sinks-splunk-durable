@@ -17,7 +17,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Serilog.Debugging;
 
-namespace Serilog.Sinks.Splunk.Plus
+namespace Serilog.Sinks.Splunk.Durable
 {
     class PortableTimer : IDisposable
     {

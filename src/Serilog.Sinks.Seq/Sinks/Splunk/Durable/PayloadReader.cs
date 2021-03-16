@@ -19,7 +19,7 @@ using System.IO;
 using System.Text;
 using Serilog.Debugging;
 
-namespace Serilog.Sinks.Splunk.Plus
+namespace Serilog.Sinks.Splunk.Durable
 {
     static class PayloadReader
     {

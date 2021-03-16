@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Serilog.Sinks.Splunk.Plus
+namespace Serilog.Sinks.Splunk.Durable
 {
     internal static class EpochExtensions
     {

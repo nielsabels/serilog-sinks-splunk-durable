@@ -15,7 +15,7 @@ namespace Serilog.Sinks.SplunkPlus.Tests.Support
         {
             _tempFolder = System.IO.Path.Combine(
                 Environment.GetEnvironmentVariable("TMP") ?? Environment.GetEnvironmentVariable("TMPDIR") ?? "/tmp",
-                "Serilog.Sinks.Seq.Tests",
+                "Serilog.Sinks.Splunk.Durable.Tests",
                 Session.ToString("n"),
                 name ?? Guid.NewGuid().ToString("n"));
 

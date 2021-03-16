@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net452;net47;netcoreapp2.2;netcoreapp3.1</TargetFrameworks>
-    <AssemblyName>Serilog.Sinks.Seq.Tests</AssemblyName>
     <AssemblyOriginatorKeyFile>../../assets/Serilog.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <RootNamespace>Serilog.Sinks.Seq.Tests</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Resources\ThreeBufferedEvents.clef.txt">
@@ -14,10 +14,6 @@
     <Content Include="Resources\ThreeBufferedEvents.json.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Serilog.Sinks.Seq\Serilog.Sinks.SplunkPlus.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +35,10 @@
   
   <ItemGroup>
     <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Serilog.Sinks.Seq\Serilog.Sinks.Splunk.Durable.csproj" />
   </ItemGroup>
 
 </Project>

@@ -18,7 +18,7 @@ using Serilog.Core;
 using Serilog.Events;
 using System.Net.Http;
 using Serilog.Sinks.PeriodicBatching;
-using Serilog.Sinks.Splunk.Plus;
+using Serilog.Sinks.Splunk.Durable;
 
 namespace Serilog
 {
