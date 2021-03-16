@@ -57,7 +57,7 @@ In your `appsettings.json` file, under the `Serilog` node, :
        {
         "Name": "SplunkEventCollector",
         "Args": {
-          "splunkHost": "https://logger.ebidar.com",
+          "splunkHost": "http://localhost:8088",
           "eventCollectorToken": "1e3fa824-6c86-4e14-a1de-ce87d1bb5dd8",
           "bufferFileFullName": "log-buffer.txt"
         }
