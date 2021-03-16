@@ -1,6 +1,6 @@
 ﻿{
   "Serilog": {
-    "Using": [ "Serilog.Sinks.Console", "Serilog.Sinks.SplunkPlus" ],
+    "Using": [ "Serilog.Sinks.Console", "Serilog.Sinks.Splunk.Plus" ],
     "MinimumLevel": "Information",
     "WriteTo": [
       {

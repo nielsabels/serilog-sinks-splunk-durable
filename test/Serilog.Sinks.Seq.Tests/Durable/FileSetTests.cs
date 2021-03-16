@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using Serilog.Sinks.SplunkPlus.Durable;
+using Serilog.Sinks.Splunk.Plus;
 using Serilog.Sinks.SplunkPlus.Tests.Support;
 using Xunit;
 

@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using Serilog.Debugging;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Serilog.Debugging;
 
-namespace Serilog.Sinks.SplunkPlus
+namespace Serilog.Sinks.Splunk.Plus
 {
     class PortableTimer : IDisposable
     {

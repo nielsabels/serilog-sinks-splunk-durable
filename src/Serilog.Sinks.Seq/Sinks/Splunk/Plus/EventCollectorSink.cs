@@ -15,13 +15,12 @@
 #if DURABLE
 
 using System;
-using Serilog.Core;
-using Serilog.Events;
 using System.Net.Http;
 using System.Text;
-using Serilog.Formatting.Compact;
+using Serilog.Core;
+using Serilog.Events;
 
-namespace Serilog.Sinks.SplunkPlus
+namespace Serilog.Sinks.Splunk.Plus
 {
     class EventCollectorSink
     : ILogEventSink, IDisposable

@@ -1,13 +1,13 @@
-﻿using Serilog.Events;
-using Serilog.Formatting;
-using Serilog.Formatting.Json;
-using Serilog.Parsing;
-using System;
+﻿using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using Serilog.Events;
+using Serilog.Formatting;
+using Serilog.Formatting.Json;
+using Serilog.Parsing;
 
-namespace Serilog.Sinks.SplunkPlus
+namespace Serilog.Sinks.Splunk.Plus
 {
     /// <summary>
     /// Compact Splunk Json Formatter

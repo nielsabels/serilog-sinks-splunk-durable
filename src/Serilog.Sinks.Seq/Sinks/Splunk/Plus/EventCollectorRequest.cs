@@ -22,7 +22,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 #endif
 
-namespace Serilog.Sinks.SplunkPlus
+namespace Serilog.Sinks.Splunk.Plus
 {
     internal class EventCollectorRequest : HttpRequestMessage
     {

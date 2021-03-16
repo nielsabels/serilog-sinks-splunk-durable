@@ -15,7 +15,7 @@
 using System;
 using Serilog.Events;
 
-namespace Serilog.Sinks.SplunkPlus
+namespace Serilog.Sinks.Splunk.Plus
 {
     static class SeqApi
     {

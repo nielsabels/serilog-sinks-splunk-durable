@@ -20,17 +20,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Serilog.Debugging;
 using Serilog.Events;
 using IOFile = System.IO.File;
-using System.Threading.Tasks;
-using Serilog.Sinks.SplunkPlus;
 
 #if HRESULTS
 using System.Runtime.InteropServices;
 #endif
 
-namespace Serilog.Sinks.SplunkPlus
+namespace Serilog.Sinks.Splunk.Plus
 {
     class HttpLogShipper : IDisposable
     {

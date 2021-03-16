@@ -23,6 +23,7 @@
     <Version>1.0.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company />
+    <AssemblyName>Serilog.Sinks.Splunk.Plus</AssemblyName>
   </PropertyGroup>
   
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">

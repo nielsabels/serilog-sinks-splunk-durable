@@ -1,5 +1,6 @@
 ﻿using Serilog.Core;
 using Serilog.Events;
+using Serilog.Sinks.Splunk.Plus;
 using Serilog.Sinks.SplunkPlus.Tests.Support;
 using Xunit;
 
