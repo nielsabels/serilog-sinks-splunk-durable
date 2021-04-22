@@ -38,7 +38,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Serilog.Sinks.Seq\Serilog.Sinks.Splunk.Durable.csproj" />
+    <ProjectReference Include="..\..\src\Serilog.Sinks.Splunk.Durable\Serilog.Sinks.Splunk.Durable.csproj" />
   </ItemGroup>
 
 </Project>

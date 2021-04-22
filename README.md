@@ -1,6 +1,6 @@
 # Serilog.Sinks.Splunk.Durable [![NuGet](https://img.shields.io/nuget/v/Serilog.Sinks.Splunk.Durable.svg)](https://nuget.org/packages/serilog.Sinks.Splunk.Durable) 
 
-A Resilient and durable Serilog sink that writes events to the Splunk based on Seq sink(https://datalust.co/seq). Supports .NET 4.5+, .NET Core, and platforms compatible with the [.NET Platform Standard](https://github.com/dotnet/corefx/blob/master/Documentation/architecture/net-platform-standard.md) 1.1 including Windows 8 & UWP, Windows Phone and Xamarin.
+A Resilient and durable Serilog sink that writes events to the Splunk (based on Seq sink https://datalust.co/seq). Supports .NET 4.5+, .NET Core, and platforms compatible with the [.NET Platform Standard](https://github.com/dotnet/corefx/blob/master/Documentation/architecture/net-platform-standard.md) 1.1 including Windows 8 & UWP, Windows Phone and Xamarin.
 
 ### Getting started
 
