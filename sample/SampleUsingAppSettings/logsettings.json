@@ -1,0 +1,42 @@
+﻿{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Console", "Serilog.Sinks.Splunk.Durable" ],
+    "MinimumLevel": "Information",
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "theme": "Serilog.Sinks.SystemConsole.Themes.SystemConsoleTheme::Literate, Serilog.Sinks.Console",
+          "outputTemplate": "[{Timestamp:HH:mm:ss} {Level:u3}] {Message}{NewLine}{Properties}{NewLine}{Exception}{NewLine}"
+        }
+      },
+      {
+        "Name": "SplunkEventCollector",
+        "Args": {
+          "splunkHost": "http://localhost:8088",
+          "eventCollectorToken": "1e3fa824-6c86-4e14-a1de-ce87d1bb5dd8",
+          "bufferFileFullName": "log-buffer.txt"
+        }
+      }
+    ],
+    "Destructure": [
+      {
+        "Name": "ToMaximumDepth",
+        "Args": { "maximumDestructuringDepth": 4 }
+      },
+      {
+        "Name": "ToMaximumStringLength",
+        "Args": { "maximumStringLength": 10000 }
+      },
+      {
+        "Name": "ToMaximumCollectionCount",
+        "Args": { "maximumCollectionCount": 100 }
+      }
+    ],
+    "Properties": {
+      "Application": "Test",
+      "Environment": "Development",
+      "CustomProperty": "CustomValue"
+    }
+  }
+}
