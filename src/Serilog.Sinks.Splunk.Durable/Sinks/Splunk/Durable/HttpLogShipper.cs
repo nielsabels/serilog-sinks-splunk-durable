@@ -177,7 +177,7 @@ namespace Serilog.Sinks.Splunk.Durable
                         else
                         {
                             _connectionSchedule.MarkFailure();
-                            SelfLog.WriteLine("Received failed HTTP from {0} with shipping result {1}: {2}", $"{request.RequestUri}", result.StatusCode,
+                            SelfLog.WriteLine("Received failed HTTP from {0} with shipping result {1}: {2}", $"{request.RequestUri} ({request.Headers.Authorization})", result.StatusCode,
                                 await result.Content.ReadAsStringAsync().ConfigureAwait(false));
 
                             if (_bufferSizeLimitBytes.HasValue)
