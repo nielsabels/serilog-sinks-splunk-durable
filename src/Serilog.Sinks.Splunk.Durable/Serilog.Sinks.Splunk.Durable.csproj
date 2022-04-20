@@ -24,6 +24,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company />
     <PackageId>Serilog.Sinks.Splunk.Durable</PackageId>
+    <PackageVersion>1.0.1</PackageVersion>
   </PropertyGroup>
   
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
