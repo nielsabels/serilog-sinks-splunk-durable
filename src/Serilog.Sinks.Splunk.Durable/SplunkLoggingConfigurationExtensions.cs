@@ -52,7 +52,7 @@ namespace Serilog
            int batchIntervalInSeconds = 2,
            int batchSizeLimit = 100,
            long? bufferSizeLimitBytes = null,
-           long? eventBodyLimitBytes = 256 * 1024,
+           long? eventBodyLimitBytes = 512 * 1024,
            long? retainedInvalidPayloadsLimitBytes = null,
            HttpMessageHandler messageHandler = null,
            LoggingLevelSwitch levelSwitch = null)
@@ -67,7 +67,6 @@ namespace Serilog
                 TimeSpan.FromSeconds(batchIntervalInSeconds),
                 bufferSizeLimitBytes,
                 eventBodyLimitBytes,
-                new ControlledLevelSwitch(levelSwitch),
                 messageHandler,
                 retainedInvalidPayloadsLimitBytes);
 

@@ -25,7 +25,7 @@ namespace Sample
                                               messageHandler: new HttpClientHandler()
                                               {
                                                   //for capturing data that sent to splunk using fiddler proxy
-                                                  //Proxy = new WebProxy("127.0.0.1", 8888),
+                                                  Proxy = new WebProxy("127.0.0.1", 8888),
                                               })
                 .CreateLogger();
 

@@ -30,8 +30,6 @@ namespace Serilog.Sinks.SplunkPlus.Tests.Durable
                 var count = 0;
                 PayloadReader.ReadPayload(1000, null, ref position, ref count, out var mimeType);
                 
-                Assert.Equal(SeqApi.CompactLogEventFormatMimeType, mimeType);
-
                 Assert.Equal(3, count);
                 Assert.Equal(465 + 3 * (Environment.NewLine.Length - 1), position.NextLineStart);
                 Assert.Equal(fn, position.File);
@@ -57,8 +55,6 @@ namespace Serilog.Sinks.SplunkPlus.Tests.Durable
                 var count = 0;
                 var payload = PayloadReader.ReadPayload(1000, null, ref position, ref count, out var mimeType);
                 
-                Assert.Equal(SeqApi.RawEventFormatMimeType, mimeType);
-
                 Assert.Equal(3, count);
                 Assert.Equal(576 + 3 * (Environment.NewLine.Length - 1), position.NextLineStart);
                 Assert.Equal(fn, position.File);

@@ -32,11 +32,11 @@ namespace Serilog.Sinks.Splunk.Durable
         {
             if (position.File.EndsWith(".json"))
             {
-                mimeType = SeqApi.RawEventFormatMimeType;
+                mimeType = Helper.RawEventFormatMimeType;
                 return ReadRawPayload(batchPostingLimit, eventBodyLimitBytes, ref position, ref count);
             }
 
-            mimeType = SeqApi.CompactLogEventFormatMimeType;
+            mimeType = Helper.CompactLogEventFormatMimeType;
             return ReadCompactPayload(batchPostingLimit, eventBodyLimitBytes, ref position, ref count);
         }
 
@@ -133,12 +133,6 @@ namespace Serilog.Sinks.Splunk.Durable
                 nextStart += 3;
 
             return true;
-        }
-
-        public static string MakeEmptyPayload(out string mimeType)
-        {
-            mimeType = SeqApi.CompactLogEventFormatMimeType;
-            return SeqApi.NoPayload;
         }
     }
 }

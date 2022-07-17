@@ -36,7 +36,6 @@ namespace Serilog.Sinks.Splunk.Durable
             TimeSpan period,
             long? bufferSizeLimitBytes,
             long? eventBodyLimitBytes,
-            ControlledLevelSwitch controlledSwitch,
             HttpMessageHandler messageHandler,
             long? retainedInvalidPayloadsLimitBytes)
         {
@@ -52,7 +51,6 @@ namespace Serilog.Sinks.Splunk.Durable
                 batchPostingLimit,
                 period,
                 eventBodyLimitBytes,
-                controlledSwitch,
                 messageHandler,
                 retainedInvalidPayloadsLimitBytes,
                 bufferSizeLimitBytes);
@@ -78,12 +76,7 @@ namespace Serilog.Sinks.Splunk.Durable
 
         public void Emit(LogEvent logEvent)
         {
-            // This is a lagging indicator, but the network bandwidth usage benefits
-            // are worth the ambiguity.
-            if (_shipper.IsIncluded(logEvent))
-            {
-                _sink.Write(logEvent);
-            }
+            _sink.Write(logEvent);
         }
     }
 }

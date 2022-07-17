@@ -53,9 +53,6 @@ namespace Serilog.Sinks.Splunk.Durable
 
         readonly PortableTimer _timer;
 
-        // Concurrent
-        readonly ControlledLevelSwitch _controlledSwitch;
-
         volatile bool _unloading;
 
         public HttpLogShipper(
@@ -65,7 +62,6 @@ namespace Serilog.Sinks.Splunk.Durable
             int batchPostingLimit,
             TimeSpan period,
             long? eventBodyLimitBytes,
-            ControlledLevelSwitch controlledSwitch,
             HttpMessageHandler messageHandler,  
             long? retainedInvalidPayloadsLimitBytes,
             long? bufferSizeLimitBytes)
@@ -74,12 +70,11 @@ namespace Serilog.Sinks.Splunk.Durable
             _serverUrl = serverUrl;
             _batchPostingLimit = batchPostingLimit;
             _eventBodyLimitBytes = eventBodyLimitBytes;
-            _controlledSwitch = controlledSwitch;
             _connectionSchedule = new ExponentialBackoffConnectionSchedule(period);
             _retainedInvalidPayloadsLimitBytes = retainedInvalidPayloadsLimitBytes;
             _bufferSizeLimitBytes = bufferSizeLimitBytes;
             _httpClient = messageHandler != null ? new EventCollectorClient(eventCollectorToken, messageHandler) : new EventCollectorClient(eventCollectorToken);
-            _httpClient.BaseAddress = new Uri(SeqApi.NormalizeServerBaseAddress(_serverUrl));
+            _httpClient.BaseAddress = new Uri(Helper.NormalizeServerBaseAddress(_serverUrl));
             _timer = new PortableTimer(c => OnTick());
 
             SetTimer();
@@ -99,12 +94,7 @@ namespace Serilog.Sinks.Splunk.Durable
 
             OnTick().GetAwaiter().GetResult();
         }
-
-        public bool IsIncluded(LogEvent logEvent)
-        {
-            return _controlledSwitch.IsIncluded(logEvent);
-        }
-
+        
         /// <inheritdoc/>
         public void Dispose()
         {
@@ -138,7 +128,7 @@ namespace Serilog.Sinks.Splunk.Durable
                     string payload, mimeType;
                     if (position.File == null)
                     {
-                        payload = PayloadReader.MakeEmptyPayload(out mimeType);
+                        payload = null;
                         count = 0;
                     }
                     else
@@ -146,12 +136,9 @@ namespace Serilog.Sinks.Splunk.Durable
                         payload = PayloadReader.ReadPayload(_batchPostingLimit, _eventBodyLimitBytes, ref position, ref count, out mimeType);
                     }
 
-                    if (count > 0 || _controlledSwitch.IsActive && _nextRequiredLevelCheckUtc < DateTime.UtcNow)
+                    if (count > 0)
                     {
                         _nextRequiredLevelCheckUtc = DateTime.UtcNow.Add(RequiredLevelCheckInterval);
-
-                        var content = new StringContent(payload, Encoding.UTF8, mimeType);
-
                         var request = new EventCollectorRequest(_serverUrl, payload, "services/collector");
                         var result = await _httpClient.SendAsync(request).ConfigureAwait(false);
                         SelfLog.WriteLine("Sent buffered data " + count + " : " + result.StatusCode);
@@ -160,9 +147,6 @@ namespace Serilog.Sinks.Splunk.Durable
                         {
                             _connectionSchedule.MarkSuccess();
                             bookmarkFile.WriteBookmark(position);
-                            var returned = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var minimumAcceptedLevel = SeqApi.ReadEventInputResult(returned);
-                            _controlledSwitch.Update(minimumAcceptedLevel);
                         }
                         else if (result.StatusCode == HttpStatusCode.BadRequest ||
                                  result.StatusCode == HttpStatusCode.RequestEntityTooLarge)
